@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Enlarger</title>
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <body>
+        <image src = "img1.png" class = "thumbnail" onclick="showImage(this)"></image>
+        <image src = "img2.png" class = "thumbnail" onclick="showImage(this)"></image>
+        <image src = "img3.png" class = "thumbnail" onclick="showImage(this)"></image>
+
+        <div id = "image-display">
+            <img id = "largeview" class = "selected-image" src = "img1.png">
+        </div>
+
+        <script>
+            function showImage(e1){
+                document.getElementById("largeview").src = e1.src;
+            }
+        </script>
+    </body>
+</html>

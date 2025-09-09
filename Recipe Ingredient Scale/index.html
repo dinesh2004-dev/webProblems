@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recipe Ingredient Scale</title>
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <body>
+        <h1>Recipe Ingredient Scale</h1>
+        <div>
+            <label>Enter Multiplier:</label>
+            <input type = "number" id = "multiplier" placeholder="Enter value" required>
+            <button type = "button" onclick = "multiply()">scale</button>
+        </div>
+
+        <div id = "unordered-list">
+            <ul>
+                <li id = "item1">2 cups of flour</li>
+                <li id = "item2">1.5 cups of sugar</li>
+                <li id = "item3">0.5 tsb salt</li>
+                <li id = "item4">3 eggs</li>
+            </ul>
+        </div>
+        <script>
+            function multiply(){
+
+                var scale = document.getElementById("multiplier").value;
+
+                document.getElementById("item1").innerHTML = scale * 2 +" cups of flour";
+                document.getElementById("item2").innerHTML = scale * 1.5 +" cups of sugar";
+                document.getElementById("item3").innerHTML = scale * 0.5 +" tsb salt";
+                document.getElementById("item4").innerHTML = scale * 3 +" eggs";
+            }
+        </script>
+    </body>
+</html>

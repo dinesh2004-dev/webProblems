@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bill Calculator</title>
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <body>
+        <h1>Bill Calculator</h1>
+        <form onsubmit="return calculateTotalBill(); return false">
+            <table>
+                <tr>
+                    <td><lable for = "Product Name">Product Name</lable></td>
+                    <td><input type = "text" id = "productName"
+                    placeholder = "Product Name" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for = "Price">Product Price In Rs.</label></td>
+                    <td><input type = "text" id = "Price" placeholder = "Product Price In Rs." required min = 1></td>
+                </tr>
+                <tr>
+                    <td><label for = "qty">Quantity</label></td>
+                    <td><input type = "text" id = "qty" placeholder = "Enter Quantity" required min = 1></td>
+                </tr>
+                <tr>
+                    <td><label for = "totalPice">Total Price in Rs.</label></td>
+                    <td><output id = "totalPrice" name = "totalPrice" for = "price qty" required></output></td>
+                </tr>
+                <tr>
+                    <td colspan = "2"><input type = "submit" id = "submit"></td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function calculateTotalBill(){
+                var price = document.getElementById("Price").value;
+                console.log(price);
+                var qty = document.getElementById("qty").value;
+                console.log(qty);
+                const totalPrice = price * qty;
+                console.log(totalPrice);
+                document.getElementById("totalPrice").innerHTML = totalPrice;
+                return false;
+            }
+        </script>
+    </body>
+</html>

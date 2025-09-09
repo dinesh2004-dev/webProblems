@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> EMI Calculator</title>
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <body>
+        <h1> EMI Calculator </h1>
+        <form onsubmit = "return calculateEMI()">
+        <table>
+            <tr>
+                <td><label for = "principalAmount">Principal Amount</label></td>
+                <td><input type = "number" id = "principalAmount" placeholder = "Principal Amount" required></td>
+            </tr>
+            <tr>
+                <td><label for = "intrestRate">Intrest Rate</label></td>
+                <td><input type = "number" id = "intrestrate" placeholder = "intrestRate" required></td>
+            </tr>
+            <tr>
+                <td><label for = "tenure">Tenure</label></td>
+                <td><input type = "number" id = "tenure" placeholder = "tenure" required></td>
+            </tr>
+            <tr>
+                <td align = "right"><input type = "submit" id = "submit" value = "calculate" ></td>
+                <td align = "left"><input onclick = "clearResult()" type = "reset" id = "reset" value = "clear"></td>
+            </tr>
+            <tr>
+                <td colspan = "2"><div id = result></div></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function calculateEMI(){
+            var principal = document.getElementById("principalAmount").value;
+            var intrestRate = document.getElementById("intrestrate").value;
+            var tenure = document.getElementById("tenure").value;
+
+            var R = (intrestRate/100)/12;
+
+            const EMI = (principal * R * (Math.pow(1 + R,tenure) / (Math.pow(1 + R,tenure) - 1))).toFixed(2);
+            document.getElementById("result").innerHTML = "EMI Is RS."+EMI;
+            return false;
+        }
+        function clearResult(){
+            document.getElementById("result").innerHTML="";
+        }
+    </script>
+    </body>
+</html>

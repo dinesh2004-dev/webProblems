@@ -1,0 +1,10 @@
+.thumbnail{
+    width : 100px;
+    height : 70px;
+    cursor : pointer;
+    
+}
+.selected-image{
+    width : 400px;
+    height : 280px;
+}

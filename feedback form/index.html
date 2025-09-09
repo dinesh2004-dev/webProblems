@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>feedback form</title>
+    <link rel = "stylesheet" href = "index.css">
+</head>
+<body>
+    <h1>Feedback For Art Of Living Session</h1>
+    <table>
+        <tr>
+            <td><label for="feedback">Enter Feedback:</label></td>
+            <td><textarea id="feedback" rows="5" cols="30" placeholder="enter your feedback"></textarea></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="addFeedback()">add feedback</button></td>
+            <td><button type="button" onclick="viewfeedback()">view feedback</button></td>
+        </tr>
+    </table>
+    <div id="result"><h1>Feedback Details</h1></div>
+
+    <script>
+        var arr = [];
+        
+        function addFeedback(){
+            alert("Function works!");
+            var feedback = document.getElementById("feedback").value;
+            arr.push(feedback);
+            document.getElementById("result").innerHTML = "<h1>Feedback Details</h1><h1>feedback added successfully</h1>";
+        }
+        
+        function viewfeedback(){
+            for(let ind = 0; ind < arr.length; ind++){
+                
+                document.getElementById("result").innerHTML  += "feedback" +
+                (ind + 1) + "<br>" +arr[ind]+"<br>";
+            }
+        }
+    </script>
+</body>
+</html>
