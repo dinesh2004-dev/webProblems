@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Loan Estimator</title>
+        <link rel = "stylesheet" hred = "index.html">
+    </head>
+    <body>
+        <h1>Fixed and Reducing Loan Estimator</h1>
+        <table id = "tablemain">
+        <table>
+            <tr>
+            <td>
+            <tr>
+                <td><label for = "principalAmount">principal Amount(Rs.)</label></td>
+                <td><input type = "text" id = "principalAmount" placeholder="Principal Amount" required><td>
+            </tr>
+            <tr>
+                <td><label for = "intrestRate">Intrest Rate(%.)</label></td>
+                <td><input type = "text" id="intrestRate" placeholder="Intrest Rate" required></td>
+            </tr>
+            <tr>
+                <td><label for = "term">Term(in months)</label></td>
+                <td><input type = "text" id = "term" placeholder="Term In Months" required></td>
+            </tr>
+            <tr>
+                <td align = "right"><button type = "button" onclick = "EstimateReducingInterestLoan()">Estimate</button></td>
+            </tr>
+            </td>
+            </tr>
+            </table>
+        
+
+
+            <tr>
+                <td>
+                    <table border="1">
+                    <caption><b>Loan Estimator</b></caption>
+                    <thead>
+                        <th>Details</th>
+                        <th>Reducing Intrest Loan</th>
+                        <th> fixed Intrest Loan</th>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                Total Intrest
+                            </td>
+                            <td>
+                                <output id = "tIntrest"></output>
+                            </td>
+                            <td>
+                                <output id = "tIntrestFixed"></output>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Total Payment
+                            </td>
+                            <td>
+                                <output id = "tPayment"></output>
+                            </td>
+                            <td>
+                                <output id = "tPaymentFixed"></output>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Monthly EMI
+                            </td>
+                            <td>
+                                <output id = "EMI"></output>
+                            </td>
+                            <td>
+                                <output id = "EMIFixed"></output>
+                            </td>
+                        </tr>
+                    </tbody>
+                </td>
+            </tr>
+            </table>
+
+            
+        </table>
+
+        <script>
+            const _principalAmount = document.getElementById("principalAmount"); 
+            const _interestRateYear = document.getElementById("intrestRate"); 
+            const _tenureMonth = document.getElementById("term"); 
+            function getEmiReducing(P, N, R) { 
+            return (P * R * (Math.pow((1 + R), N) / (Math.pow((1 + R), N) - 
+            1))); 
+            } 
+            function EstimateReducingInterestLoan() { 
+            calculateEMI(); 
+            totalPayment(); 
+            totalInterest(); 
+            EstimateFixedInterestLoan(); 
+            } 
+            function EstimateFixedInterestLoan() { 
+            const principalAmount = Number(_principalAmount.value); 
+            const interestRateYear = Number(_interestRateYear.value); 
+            const tenureMonth = Number(_tenureMonth.value); 
+            const totalInterestFixed = principalAmount * interestRateYear * 
+            tenureMonth / 1200; 
+            const totalPaymentFixed = principalAmount + totalInterestFixed; 
+            const emiFixed = totalPaymentFixed / tenureMonth; 
+            document.getElementById("tIntrestFixed").innerHTML = 
+            Number(totalInterestFixed).toFixed(2).toString(); 
+            document.getElementById("tPaymentFixed").innerHTML = 
+            Number(totalPaymentFixed).toFixed(2).toString(); 
+            document.getElementById("EMIFixed").innerHTML = 
+            Number(emiFixed).toFixed(2).toString(); 
+            } 
+            function reducingLoan() { 
+            const principalAmount = Number(_principalAmount.value); 
+            const interestRateYear = Number(_interestRateYear.value); 
+            const interestRateMonth = Number(interestRateYear / 1200); 
+            const tenureMonth = Number(_tenureMonth.value); 
+            const emiReducing = getEmiReducing(principalAmount, tenureMonth, 
+            interestRateMonth); 
+            const totalPaymentReducing = tenureMonth * emiReducing; 
+            const totalInterestReducing = totalPaymentReducing - 
+            principalAmount; 
+            return { 
+            emiReducing: emiReducing, 
+            totalPaymentReducing: totalPaymentReducing, 
+            totalInterestReducing: totalInterestReducing 
+            }; 
+            } 
+            function calculateEMI() { 
+            const emiReducing = reducingLoan().emiReducing; 
+            document.getElementById("EMI").innerHTML = 
+            Number(emiReducing).toFixed(2).toString(); 
+            } 
+            function totalPayment() { 
+            const totalPaymentReducing = reducingLoan().totalPaymentReducing; 
+            document.getElementById("tPayment").innerHTML = 
+            Number(totalPaymentReducing).toFixed(2).toString(); 
+            } 
+            function totalInterest() { 
+            const totalInterestReducing = reducingLoan().totalInterestReducing; 
+            document.getElementById("tIntrest").innerHTML = Number(totalInterestReducing).toFixed(2).toString(); 
+            }
+        </script>
+
+    </body>
+</html>

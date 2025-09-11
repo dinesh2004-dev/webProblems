@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tabbed Interface</title>
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <body>
+        <div class = "container">
+            <h1> Tabbed Interface</h1>
+            <div class = "Tabs-container">
+                <div class = "Tab-Navigation">
+                    <button class = "Tab-btn" id = "tab1" data-tab = "tab1" onclick="switchTab('tab1')">
+                        home
+                    </button>
+                     <button class = "Tab-btn" id = "tab2" data-tab = "tab2" onclick="switchTab('tab2')">
+                        About
+                    </button>
+                     <button class = "Tab-btn" id = "tab3" data-tab = "tab3" onclick="switchTab('tab3')">
+                        services
+                    </button>
+                     
+                </div>
+                <div class = "tab-content">
+                    <div id = "tab1-content" class = "tab-panel">
+                        <h2>Welcome To Our Home</h2>
+                    </div>
+                    <div id = "tab2-content" class = "tab-panel">
+                        <h2>About us</h2>
+                    </div>
+                    <div id = "tab3-content" class = "tab-panel">
+                        <h2>our services</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function switchTab(tabId){
+                var tabPanels = document.querySelectorAll('.tab-panel');
+
+                tabPanels.forEach(panel =>{
+                    panel.classList.remove('active');
+                });
+
+                 var tabButtons = document.querySelectorAll('.Tab-btn');
+
+                tabButtons.forEach(tabButton =>{
+                    tabButton.classList.remove('active-tab');
+                });
+                
+                var activeTabPanel = document.getElementById(tabId+"-content");
+                activeTabPanel.classList.add('active'); 
+
+                var activeTabBtn = document.getElementById(tabId);
+                activeTabBtn.classList.add('active-tab');
+                
+           }
+        </script>
+    </body>
+</html>
