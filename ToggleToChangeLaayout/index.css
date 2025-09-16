@@ -1,0 +1,16 @@
+.dark{
+    background-color: black;
+}
+
+.light{
+    background-color: white;
+}
+.light .span{
+    color : black;
+}
+.dark .span{
+    color : white;
+}
+button{
+    cursor : pointer;
+}

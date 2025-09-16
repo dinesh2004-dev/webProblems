@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <body class = "dark">
+        <span class = "span">Count:</span><span class = "span" id = "count">0</span>
+        <button id ="tab-switch" onclick = "toggleMode()">Switch to Light Mode</button>
+
+        <script>
+           
+     function toggleMode() {
+        const spanEle = document.getElementById("count");
+        const spans = document.querySelectorAll("span");
+        var count = parseInt(spanEle.textContent);
+        count += 1;
+        spanEle.textContent = count;
+        // alert(count);
+        
+        const body = document.body;
+        const list = body.classList;
+       
+         if(list.contains("dark")){
+            body.classList.remove("dark");
+            body.classList.add("light");
+            document.getElementById("tab-switch").innerHTML = "Switch To DarkMode";
+            
+         }
+         else{
+             body.classList.remove("light");
+            body.classList.add("dark");
+            document.getElementById("tab-switch").innerHTML = "Switch To LightMode";
+            
+         }
+        //  alert("working Fine!");
+    }
+        </script>
+    </body>
+
+</html>
